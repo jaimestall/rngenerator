@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Inter:wght@400;600&display=swap"
+    rel="stylesheet" />
+  <title>RNGenerator</title>
+</head>
+
+<body>
+  <main>
+    <section class="hero">
+      <h1 class="title">RNGenerator</h1>
+      <p class="subtitle">Use the generator to create a strong and safe
+        password!</p>
+    </section>
+
+    <section class="box">
+      <div class="password">
+        <div class="text">
+          <input type="text" name="password" id="password" readonly />
+        </div>
+        <div class="action">
+          <button id="copy-1">
+            <img src="assets/copy.svg" width="42" alt="Copy password">
+          </button>
+          <button id="refresh">
+            <img src="assets/refresh.svg" width="42" alt="Refresh password">
+          </button>
+        </div>
+      </div>
+      <div class="security-indicator">
+        <div id="security-indicator-bar" class="bar" style="width: 90%">
+        </div>
+      </div>
+    </section>
+
+    <section class="box customize">
+      <h3 class="title">Customize</h3>
+      <div class="action">
+        <div class="password-length">
+          <p>Password length: <span id="password-length-text">4</span> </p>
+          <input type="range" name="password-length" id="password-length"
+            class="slider" value="4" min="1" max="20" />
+        </div>
+        <div class="config">
+          <label class="checkbox-container">
+            <span class="text">Uppercase</span>
+            <input type="checkbox" id="uppercase-checkbox" checked>
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="checkbox-container">
+            <span class="text">Number</span>
+            <input type="checkbox" id="number-checkbox" checked>
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="checkbox-container">
+            <span class="text">Symbol</span>
+            <input type="checkbox" id="symbol-checkbox" checked>
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <div class="submit">
+      <button id="copy-2">To clipboard!</button>
+    </div>
+  </main>
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
