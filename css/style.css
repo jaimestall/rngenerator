@@ -202,3 +202,8 @@ main {
 .submit button:hover {
   background-color: #9b51e0;
 }
+@media only screen and (max-width: 480px) {
+  .password {
+    padding: 1rem;
+  }
+}

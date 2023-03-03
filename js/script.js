@@ -59,7 +59,7 @@ function calculateQuality() {
 
 function calculateFontSize() {
   if (passwordLength > 16) {
-
+    
   } else if (passwordLength > 8) {
 
   } else {
