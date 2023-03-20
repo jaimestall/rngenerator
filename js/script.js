@@ -1,6 +1,7 @@
 const upperCaseCheckEl = document.getElementById('uppercase-checkbox')
 const numberCheckEl = document.getElementById('number-checkbox')
 const symbolCheckEl = document.getElementById('symbol-checkbox')
+const onlyNumbersCheckEl = document.getElementById('only-numbers-checkbox')
 const inputValue = document.querySelector('#password');
 const securityBarEl = document.querySelector('#security-indicator-bar')
 
@@ -9,11 +10,12 @@ let passwordLength = 4;
 
 
 function generatePassword() {
+  onlyNumbersCheckEl.checked = false
   let chars = 'abcdefghjklmnpqrstuvwxyz';
 
   const uppercaseChars = 'ABCDEFGJKLMNPQRSTUVWXYZ';
-  const numberChars = '123456789';
-  const symbolChars = '!@#$%*&'
+  const numberChars = '0123456789';
+  const symbolChars = '!@#$%*&';
 
   if (upperCaseCheckEl.checked) {
     chars += uppercaseChars
@@ -24,6 +26,22 @@ function generatePassword() {
   if (symbolCheckEl.checked) {
     chars += symbolChars
   }
+
+
+  let password = "";
+  for (let i = 0; i < passwordLength; i++) {
+    const randomNumber = Math.floor(Math.random() * chars.length)
+    password += chars.substring(randomNumber, randomNumber + 1)
+  }
+  inputValue.value = password
+  calculateQuality()
+}
+
+function generateNumberPassword() {
+  upperCaseCheckEl.checked = false
+  numberCheckEl.checked = false
+  symbolCheckEl.checked = false
+  chars = '0123456789'
 
   let password = "";
   for (let i = 0; i < passwordLength; i++) {
@@ -57,16 +75,6 @@ function calculateQuality() {
   }
 }
 
-function calculateFontSize() {
-  if (passwordLength > 16) {
-    
-  } else if (passwordLength > 8) {
-
-  } else {
-
-  }
-}
-
 function copy() {
   navigator.clipboard.writeText(inputValue.value)
   console.log('Senha copiada para o clipboard!')
@@ -87,5 +95,6 @@ document.getElementById("refresh").addEventListener('click', generatePassword)
 upperCaseCheckEl.addEventListener('click', generatePassword)
 numberCheckEl.addEventListener('click', generatePassword)
 symbolCheckEl.addEventListener('click', generatePassword)
+onlyNumbersCheckEl.addEventListener('click', generateNumberPassword)
 
 generatePassword();
