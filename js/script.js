@@ -10,38 +10,29 @@ let passwordLength = 4;
 
 
 function generatePassword() {
-  onlyNumbersCheckEl.checked = false
+  console.log(upperCaseCheckEl.checked, numberCheckEl.checked, symbolCheckEl.checked, onlyNumbersCheckEl.checked)
   let chars = 'abcdefghjklmnpqrstuvwxyz';
 
   const uppercaseChars = 'ABCDEFGJKLMNPQRSTUVWXYZ';
   const numberChars = '0123456789';
   const symbolChars = '!@#$%*&';
 
-  if (upperCaseCheckEl.checked) {
-    chars += uppercaseChars
+  if (onlyNumbersCheckEl.checked) {
+    upperCaseCheckEl.checked = false;
+    numberCheckEl.checked = false;
+    symbolCheckEl.checked = false;
+    chars = numberChars;
+  } else {
+    if (upperCaseCheckEl.checked) {
+      chars += uppercaseChars
+    }
+    if (numberCheckEl.checked) {
+      chars += numberChars
+    }
+    if (symbolCheckEl.checked) {
+      chars += symbolChars
+    }
   }
-  if (numberCheckEl.checked) {
-    chars += numberChars
-  }
-  if (symbolCheckEl.checked) {
-    chars += symbolChars
-  }
-
-
-  let password = "";
-  for (let i = 0; i < passwordLength; i++) {
-    const randomNumber = Math.floor(Math.random() * chars.length)
-    password += chars.substring(randomNumber, randomNumber + 1)
-  }
-  inputValue.value = password
-  calculateQuality()
-}
-
-function generateNumberPassword() {
-  upperCaseCheckEl.checked = false
-  numberCheckEl.checked = false
-  symbolCheckEl.checked = false
-  chars = '0123456789'
 
   let password = "";
   for (let i = 0; i < passwordLength; i++) {
@@ -87,14 +78,14 @@ passwordLengthEl.addEventListener("input", function () {
     passwordLength
   generatePassword()
 })
-
 document.getElementById("copy-1").addEventListener('click', copy)
 document.getElementById("copy-2").addEventListener('click', copy)
 document.getElementById("refresh").addEventListener('click', generatePassword)
 
+
 upperCaseCheckEl.addEventListener('click', generatePassword)
 numberCheckEl.addEventListener('click', generatePassword)
 symbolCheckEl.addEventListener('click', generatePassword)
-onlyNumbersCheckEl.addEventListener('click', generateNumberPassword)
+onlyNumbersCheckEl.addEventListener('click', generatePassword)
 
 generatePassword();
